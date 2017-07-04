@@ -1,9 +1,26 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(sara_moveit)
+SET(CMAKE_CXX_STANDARD 11)
+add_definitions(-std=c++11)
 
-find_package(catkin REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system)
+find_package(catkin REQUIRED COMPONENTS
+        roscpp
+        moveit_core
+        )
 
 catkin_package()
+
+add_executable( sara_moveit_server
+        include/sara_moveit/move_arm_server.h
+        src/move_arm_server.cpp )
+
+include_directories(
+        ${catkin_INCLUDE_DIRS}
+        include
+)
+
+target_link_libraries(sara_moveit_server ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   PATTERN "setup_assistant.launch" EXCLUDE)
