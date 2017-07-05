@@ -15,7 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_service_files(
         DIRECTORY srv
-        FILES pick.srv move.srv
+        FILES
+        #pick.srv
+        move.srv
 )
 
 generate_messages(
