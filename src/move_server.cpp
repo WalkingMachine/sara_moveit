@@ -9,18 +9,19 @@
 
 bool move( sara_moveit::moveRequest &req, sara_moveit::moveResponse &resp )
 {
-    moveit::planning_interface::MoveGroupInterface group(req.move_group);
-    group.setPoseTarget(req.pose);
-    if (!group.move( ))
+    try {
+        moveit::planning_interface::MoveGroupInterface group("right_arm");
+        group.setPoseTarget(req.pose);
+        return group.move();
+    } catch ( __exception ex ){
         return false;
+    }
 }
 
 int main(int argc, char **argv)
 {
 
     ros::init(argc, argv, "move_arm_server");
-    ros::AsyncSpinner spinner(1);
-    spinner.start();
 
     ros::NodeHandle nh;
 
