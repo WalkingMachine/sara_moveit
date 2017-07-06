@@ -2,7 +2,7 @@
 //// Created by philippe on 02/07/17.
 ////
 
-#include <sara_moveit/move_server.h>
+#include <sara_moveit/move_arm_server.h>
 #include <moveit/planning_scene_monitor/planning_scene_monitor.h>
 #include <moveit/move_group_interface/move_group_interface.h>
 
@@ -10,7 +10,7 @@
 bool move( sara_moveit::moveRequest &req, sara_moveit::moveResponse &resp )
 {
     try {
-        moveit::planning_interface::MoveGroupInterface group("right_arm");
+        moveit::planning_interface::MoveGroupInterface group(req.move_group);
         group.setPoseTarget(req.pose);
         return group.move();
     } catch ( __exception ex ){
