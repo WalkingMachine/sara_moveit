@@ -6,6 +6,8 @@ find_package(Boost REQUIRED COMPONENTS system)
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     moveit_core
+    moveit_ros_move_group
+    moveit_ros_planning_interface
     roscpp rospy
     std_msgs
     message_generation
@@ -26,9 +28,9 @@ generate_messages(
 
 
 
-add_executable( sara_moveit_move_server
-        include/sara_moveit/move_server.h
-        src/move_server.cpp
+add_executable( move_arm_server
+        include/sara_moveit/move_arm_server.h
+        src/move_arm_server.cpp
         )
 
 #add_executable( sara_moveit_pick_server
@@ -43,7 +45,7 @@ include_directories(
     include
 )
 
-target_link_libraries(sara_moveit_move_server ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(move_arm_server ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   PATTERN "setup_assistant.launch" EXCLUDE)
