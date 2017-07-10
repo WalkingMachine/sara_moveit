@@ -11,7 +11,9 @@
 #include <geometry_msgs/Pose.h>
 #include <moveit/planning_scene_monitor/planning_scene_monitor.h>
 #include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit_planners_ompl/OMPLDynamicReconfigureConfig.h>
 #include <geometric_shapes/solid_primitive_dims.h>
+#include <sara_moveit/move.h>
 //
 //moveit::planning_interface::MoveGroupInterface group;
 //

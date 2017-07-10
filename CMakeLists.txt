@@ -17,27 +17,17 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_service_files(
         DIRECTORY srv
-        FILES
-        #pick.srv
-        move.srv
+        FILES  move.srv
 )
 
 generate_messages(
-        DEPENDENCIES geometry_msgs
+        DEPENDENCIES geometry_msgs std_msgs
 )
-
-
 
 add_executable( move_arm_server
         include/sara_moveit/move_arm_server.h
         src/move_arm_server.cpp
         )
-
-#add_executable( sara_moveit_pick_server
-#        include/sara_moveit/pick_server.h
-#        src/pick_server.cpp
-#        )
-
 
 
 include_directories(

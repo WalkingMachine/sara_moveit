@@ -3,9 +3,6 @@
 ////
 
 #include <sara_moveit/move_arm_server.h>
-#include <moveit/planning_scene_monitor/planning_scene_monitor.h>
-#include <moveit/move_group_interface/move_group_interface.h>
-#include <moveit_planners_ompl/OMPLDynamicReconfigureConfig.h>
 
 bool move( sara_moveit::moveRequest &req, sara_moveit::moveResponse &resp )
 {
@@ -34,21 +31,23 @@ bool move( sara_moveit::moveRequest &req, sara_moveit::moveResponse &resp )
         }while(group.plan( plan ).val != 1 );
         group.execute( plan );
         resp.success = 1;
-        double dist = 100;
-        while ( dist > 0.05 ) {
-            auto Tpos = group.getPoseTarget().pose.position;
-            auto Cpos = group.getCurrentPose().pose.position;
-            dist = sqrt((Tpos.x - Cpos.x) * (Tpos.x - Cpos.x)
-                        + (Tpos.y - Cpos.y) * (Tpos.y - Cpos.y)
-                        + (Tpos.z - Cpos.z) * (Tpos.z - Cpos.z));
-            usleep(1000000);
-        }
+        double dist = 0;
+        auto Tpos = group.getPoseTarget().pose;
+        do {
+            auto Cpos = group.getCurrentPose().pose;
+            double dx2 = (Cpos.position.x-Tpos.position.x)*(Cpos.position.x-Tpos.position.x);
+            double dy2 = (Cpos.position.y-Tpos.position.y)*(Cpos.position.y-Tpos.position.y);
+            double dz2 = (Cpos.position.z-Tpos.position.z)*(Cpos.position.z-Tpos.position.z);
+            dist = sqrt( dx2+dy2+dz2 );
+            double Cw = Cpos.orientation.w;
+            double Tw = Tpos.orientation.w;
+            dx2 = (Cpos.orientation.x/Cw-Tpos.orientation.x/Tw)*(Cpos.orientation.x/Cw-Tpos.orientation.x/Tw);
+            dy2 = (Cpos.orientation.y/Cw-Tpos.orientation.y/Tw)*(Cpos.orientation.y/Cw-Tpos.orientation.y/Tw);
+            dz2 = (Cpos.orientation.z/Cw-Tpos.orientation.z/Tw)*(Cpos.orientation.z/Cw-Tpos.orientation.z/Tw);
+            dist += sqrt( dx2+dy2+dz2 );
+            usleep(100000);
+        }while ( dist > 0.05 );
 
-        //auto state = group.getCurrentState();
-        //state->
-        //resp.success = (char)((group.move().val == 1)?1:0);
-        //group.stop();
-        //resp.success = (char)((group.move().val == 1)?1:0);
         ROS_INFO("Move result: %d",resp.success);
     } catch ( __exception ex ){
         resp.success = 0;
