@@ -15,6 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
     std_srvs
     agile_grasp
     grasp_selection
+    tf
+    tf_conversions
+    eigen_conversions
 )
 
 add_service_files(

@@ -139,10 +139,11 @@ tf::Quaternion calculateHandOrientations(const GraspEigen& grasp)
     Eigen::Transform<double, 3, Eigen::Affine> T(Eigen::AngleAxis<double>(3.14159, grasp.approach_));
 
     // convert Eigen rotation matrices to TF quaternions and normalize them
-    tf::Matrix3x3 TF1, TF2;
+    tf::Matrix3x3 TF1;
     tf::matrixEigenToTF(R, TF1);
+
     tf::Quaternion quat1;
-    TF1.getRotation(quat1);
+//    TF1.getRotation(quat1);
     quat1.normalize();
 
     return quat1;
