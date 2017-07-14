@@ -22,11 +22,11 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_service_files(
         DIRECTORY srv
-        FILES  move.srv
+        FILES  move.srv pick.srv
 )
 
 generate_messages(
-        DEPENDENCIES geometry_msgs std_msgs
+        DEPENDENCIES geometry_msgs std_msgs agile_grasp
 )
 
 add_executable( move_arm_server

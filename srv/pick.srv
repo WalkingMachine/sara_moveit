@@ -1,7 +1,6 @@
 #pose list
 string move_group
-float64 width
-geometry_msgs/Pose pose
+agile_grasp/Grasp[] grasps
 ---
 #result
 bool success

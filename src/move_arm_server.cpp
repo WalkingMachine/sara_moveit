@@ -13,37 +13,50 @@
 
 
 
-bool grasp( agile_grasp::GraspsConstPtr msg ){
-    moveit::planning_interface::MoveGroupInterface group("RightArm");
+bool grasp( sara_moveit::pickRequest &req, sara_moveit::pickResponse &resp ) {
+    moveit::planning_interface::MoveGroupInterface group(req.move_group);
+    bool success = false;
+    group.allowReplanning(false);
+    //group.setNumPlanningAttempts(5);
+    moveit::planning_interface::MoveGroupInterface::Plan plan;
 
-    int length = (int)msg->grasps.size();
-    for ( int i=0; i<length; i++ ){
+    int length = (int) req.grasps.size();
+    for (int i = 0; i < length; i++) {
         geometry_msgs::Pose pose;
 
-        GraspEigen grasp(msg->grasps[i]);
-        auto quat = calculateHandOrientations( grasp );
+        GraspEigen grasp(req.grasps[i]);
+        auto quat = calculateHandOrientations(grasp);
         pose.orientation.x = quat.getX();
         pose.orientation.y = quat.getY();
         pose.orientation.z = quat.getZ();
-        pose.position.x = msg->grasps[i].center.x;
-        pose.position.y = msg->grasps[i].center.y;
-        pose.position.z = msg->grasps[i].center.z;
+        pose.position.x = req.grasps[i].center.x;
+        pose.position.y = req.grasps[i].center.y;
+        pose.position.z = req.grasps[i].center.z;
+//
+//        moveit_msgs::Grasp Grasp;
+//        Grasp.grasp_pose.pose = pose;
+//        Grasp.pre_grasp_approach.direction.vector = req.grasps[i].approach;
+//        double x = req.grasps[i].approach.x;
+//        double y = req.grasps[i].approach.y;
+//        double z = req.grasps[i].approach.z;
+//
+//        double dist = sqrt( x*x+y*y+z*z );
+//        Grasp.pre_grasp_approach.desired_distance = (float)dist;
+//        Grasp.post_grasp_retreat.direction.vector = req.grasps[i].approach;
+//        Grasp.post_grasp_retreat.desired_distance = (float)dist;
+        group.setPoseTarget(pose);
 
-        moveit_msgs::Grasp Grasp;
-        Grasp.grasp_pose.pose = pose;
-        Grasp.pre_grasp_approach.direction.vector = msg->grasps[i].approach;
-        double x = msg->grasps[i].approach.x;
-        double y = msg->grasps[i].approach.y;
-        double z = msg->grasps[i].approach.z;
-
-        double dist = sqrt( x*x+y*y+z*z );
-        Grasp.pre_grasp_approach.desired_distance = (float)dist;
-        Grasp.post_grasp_retreat.direction.vector = msg->grasps[i].approach;
-        Grasp.post_grasp_retreat.desired_distance = (float)dist;
-
-        group.pick( "object", Grasp);
-        moveit::planning_interface::MoveGroupInterface::Plan plan;
+        if (group.plan(plan).val == 1) {
+            success = true;
+            break;
+        }
     }
+    if (success) {
+        group.asyncExecute(plan);
+        waitForExecution(group);
+    }
+    resp.success = (char)(success ? 1 : 0);
+
     return true;
 }
 
@@ -78,22 +91,7 @@ bool move( sara_moveit::moveRequest &req, sara_moveit::moveResponse &resp )
         }while(group.plan( plan ).val != 1 );
         group.execute( plan );
         resp.success = 1;
-        double dist = 0;
-        auto Tpos = group.getPoseTarget().pose;
-        do {
-            auto Cpos = group.getCurrentPose().pose;
-            double dx2 = (Cpos.position.x-Tpos.position.x)*(Cpos.position.x-Tpos.position.x);
-            double dy2 = (Cpos.position.y-Tpos.position.y)*(Cpos.position.y-Tpos.position.y);
-            double dz2 = (Cpos.position.z-Tpos.position.z)*(Cpos.position.z-Tpos.position.z);
-            dist = sqrt( dx2+dy2+dz2 );
-            double Cw = Cpos.orientation.w;
-            double Tw = Tpos.orientation.w;
-            dx2 = (Cpos.orientation.x/Cw-Tpos.orientation.x/Tw)*(Cpos.orientation.x/Cw-Tpos.orientation.x/Tw);
-            dy2 = (Cpos.orientation.y/Cw-Tpos.orientation.y/Tw)*(Cpos.orientation.y/Cw-Tpos.orientation.y/Tw);
-            dz2 = (Cpos.orientation.z/Cw-Tpos.orientation.z/Tw)*(Cpos.orientation.z/Cw-Tpos.orientation.z/Tw);
-            dist += sqrt( dx2+dy2+dz2 );
-            usleep(100000);
-        }while ( dist > 0.05 );
+        waitForExecution( group );
 
         ROS_INFO("Move result: %d",resp.success);
     } catch ( __exception ex ){
@@ -107,12 +105,13 @@ int main(int argc, char **argv)
 
     ros::init(argc, argv, "move_arm_server");
 
-    ros::AsyncSpinner sp( 2 );
+    ros::AsyncSpinner sp( 4 );
     sp.start();
 
     ros::NodeHandle nh;
 
-    ros::ServiceServer service = nh.advertiseService( "move_arm", move );
+    ros::ServiceServer serviceMove = nh.advertiseService( "move_arm", move );
+    ros::ServiceServer servicePick = nh.advertiseService( "pick", grasp );
     ROS_INFO("Ready to move.");
     //ros::spin();
     while ( ros::ok()){}
@@ -147,4 +146,29 @@ tf::Quaternion calculateHandOrientations(const GraspEigen& grasp)
     quat1.normalize();
 
     return quat1;
+}
+
+void waitForExecution( moveit::planning_interface::MoveGroupInterface group ){
+    double dist = 0;
+    auto Tpos = group.getPoseTarget().pose;
+    do {
+        auto Cpos = group.getCurrentPose().pose;
+        double dx2 = (Cpos.position.x-Tpos.position.x)*(Cpos.position.x-Tpos.position.x);
+        double dy2 = (Cpos.position.y-Tpos.position.y)*(Cpos.position.y-Tpos.position.y);
+        double dz2 = (Cpos.position.z-Tpos.position.z)*(Cpos.position.z-Tpos.position.z);
+        dist = sqrt( dx2+dy2+dz2 );
+        double Cw = Cpos.orientation.w;
+        double Tw = Tpos.orientation.w;
+        if ( Tw != 0 && Cw != 0 ) {
+            dx2 = (Cpos.orientation.x / Cw - Tpos.orientation.x / Tw) *
+                  (Cpos.orientation.x / Cw - Tpos.orientation.x / Tw);
+            dy2 = (Cpos.orientation.y / Cw - Tpos.orientation.y / Tw) *
+                  (Cpos.orientation.y / Cw - Tpos.orientation.y / Tw);
+            dz2 = (Cpos.orientation.z / Cw - Tpos.orientation.z / Tw) *
+                  (Cpos.orientation.z / Cw - Tpos.orientation.z / Tw);
+        }
+        dist += sqrt( dx2+dy2+dz2 );
+        usleep(100000);
+        ROS_ERROR( "dist: %f", dist );
+    }while ( dist > 0.05 );
 }

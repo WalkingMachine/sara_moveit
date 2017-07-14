@@ -14,6 +14,7 @@
 #include <moveit_planners_ompl/OMPLDynamicReconfigureConfig.h>
 #include <geometric_shapes/solid_primitive_dims.h>
 #include <sara_moveit/move.h>
+#include <sara_moveit/pick.h>
 #include <agile_grasp/grasp_hypothesis.h>
 #include <agile_grasp/Grasp.h>
 #include <Eigen/Dense>
@@ -66,6 +67,8 @@ struct GraspEigen
 tf::Quaternion calculateHandOrientations(const GraspEigen& grasp);
 int main(int argc, char **argv);
 bool move( sara_moveit::moveRequest &req, sara_moveit::moveResponse &resp );
+bool grasp( sara_moveit::pickRequest &req, sara_moveit::pickResponse &resp );
+void waitForExecution( moveit::planning_interface::MoveGroupInterface group );
 
 
 
