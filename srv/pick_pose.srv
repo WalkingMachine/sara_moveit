@@ -1,0 +1,7 @@
+#pose list
+string move_group
+float64 width
+geometry_msgs/Pose pose
+---
+#result
+bool success

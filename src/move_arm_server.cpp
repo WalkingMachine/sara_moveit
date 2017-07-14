@@ -3,6 +3,53 @@
 ////
 
 #include <sara_moveit/move_arm_server.h>
+#include <agile_grasp/Grasps.h>
+#include <Eigen/Dense>
+#include <eigen_conversions/eigen_msg.h>
+
+// taken from the grasp selection package
+
+
+
+
+
+bool grasp( agile_grasp::GraspsConstPtr msg ){
+    moveit::planning_interface::MoveGroupInterface group("RightArm");
+
+    int length = (int)msg->grasps.size();
+    for ( int i=0; i<length; i++ ){
+        geometry_msgs::Pose pose;
+
+        GraspEigen grasp(msg->grasps[i]);
+        auto quat = calculateHandOrientations( grasp );
+        pose.orientation.x = quat.getX();
+        pose.orientation.y = quat.getY();
+        pose.orientation.z = quat.getZ();
+        pose.position.x = msg->grasps[i].center.x;
+        pose.position.y = msg->grasps[i].center.y;
+        pose.position.z = msg->grasps[i].center.z;
+
+        moveit_msgs::Grasp Grasp;
+        Grasp.grasp_pose.pose = pose;
+        Grasp.pre_grasp_approach.direction.vector = msg->grasps[i].approach;
+        double x = msg->grasps[i].approach.x;
+        double y = msg->grasps[i].approach.y;
+        double z = msg->grasps[i].approach.z;
+
+        double dist = sqrt( x*x+y*y+z*z );
+        Grasp.pre_grasp_approach.desired_distance = (float)dist;
+        Grasp.post_grasp_retreat.direction.vector = msg->grasps[i].approach;
+        Grasp.post_grasp_retreat.desired_distance = (float)dist;
+
+        group.pick( "object", Grasp);
+        moveit::planning_interface::MoveGroupInterface::Plan plan;
+    }
+    return true;
+}
+
+
+
+
 
 bool move( sara_moveit::moveRequest &req, sara_moveit::moveResponse &resp )
 {
@@ -71,4 +118,32 @@ int main(int argc, char **argv)
     while ( ros::ok()){}
 
     return 0;
+}
+
+
+
+
+
+
+
+
+tf::Quaternion calculateHandOrientations(const GraspEigen& grasp)
+{
+    // calculate first hand orientation
+    Eigen::Matrix3d R = Eigen::MatrixXd::Zero(3, 3);
+    R.col(0) = -1.0 * grasp.approach_;
+    R.col(1) = grasp.axis_;
+    R.col(2) << R.col(0).cross(R.col(1));
+
+    // rotate by 180deg around the grasp approach vector to get the "opposite" hand orientation
+    Eigen::Transform<double, 3, Eigen::Affine> T(Eigen::AngleAxis<double>(3.14159, grasp.approach_));
+
+    // convert Eigen rotation matrices to TF quaternions and normalize them
+    tf::Matrix3x3 TF1, TF2;
+    tf::matrixEigenToTF(R, TF1);
+    tf::Quaternion quat1;
+    TF1.getRotation(quat1);
+    quat1.normalize();
+
+    return quat1;
 }

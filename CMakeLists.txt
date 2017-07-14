@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
     message_generation
     geometry_msgs
     std_srvs
+    agile_grasp
+    grasp_selection
 )
 
 add_service_files(
