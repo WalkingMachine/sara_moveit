@@ -6,6 +6,7 @@
 #include <agile_grasp/Grasps.h>
 #include <Eigen/Dense>
 #include <eigen_conversions/eigen_msg.h>
+#include <grasp_selection/SelectGrasps.h>
 
 // taken from the grasp selection package
 
@@ -20,31 +21,19 @@ bool grasp( sara_moveit::pickRequest &req, sara_moveit::pickResponse &resp ) {
     //group.setNumPlanningAttempts(5);
     moveit::planning_interface::MoveGroupInterface::Plan plan;
 
-    int length = (int) req.grasps.size();
-    for (int i = 0; i < length; i++) {
-        geometry_msgs::Pose pose;
+    // call the grasp_selection service
+    grasp_selection::SelectGrasps selector;
+    selector.request.hand_pose = group.getCurrentPose().pose;
+    ros::service::waitForService( "grasp_selection" );
+    ros::service::call( "grasp_selection", selector );
+    selector.response.grasps.grasps[0].pose;
 
-        GraspEigen grasp(req.grasps[i]);
-        auto quat = calculateHandOrientations(grasp);
-        pose.orientation.x = quat.getX();
-        pose.orientation.y = quat.getY();
-        pose.orientation.z = quat.getZ();
-        pose.position.x = req.grasps[i].center.x;
-        pose.position.y = req.grasps[i].center.y;
-        pose.position.z = req.grasps[i].center.z;
-//
-//        moveit_msgs::Grasp Grasp;
-//        Grasp.grasp_pose.pose = pose;
-//        Grasp.pre_grasp_approach.direction.vector = req.grasps[i].approach;
-//        double x = req.grasps[i].approach.x;
-//        double y = req.grasps[i].approach.y;
-//        double z = req.grasps[i].approach.z;
-//
-//        double dist = sqrt( x*x+y*y+z*z );
-//        Grasp.pre_grasp_approach.desired_distance = (float)dist;
-//        Grasp.post_grasp_retreat.direction.vector = req.grasps[i].approach;
-//        Grasp.post_grasp_retreat.desired_distance = (float)dist;
-        group.setPoseTarget(pose);
+
+
+    int length = (int) selector.response.grasps.grasps.size();
+    for (int i = 0; i < length; i++) {
+
+        group.setPoseTarget( selector.response.grasps.grasps[i].pose );
 
         if (group.plan(plan).val == 1) {
             success = true;

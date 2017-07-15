@@ -25,21 +25,21 @@
               padding: 0.05
             - name: right_socket_link
               padding: 0.05
-            - name: right_robotiq_85_base_link
+            - name: base_link
               padding: 0.05
-            - name: right_robotiq_85_left_knuckle_link
+            - name: left_knuckle_link
               padding: 0.05
-            - name: right_robotiq_85_right_knuckle_link
+            - name: right_knuckle_link
               padding: 0.05
-            - name: right_robotiq_85_left_finger_link
+            - name: left_finger_link
               padding: 0.05
-            - name: right_robotiq_85_right_finger_link
+            - name: right_finger_link
               padding: 0.05
-            - name: right_robotiq_85_left_inner_knuckle_link
+            - name: left_inner_knuckle_link
               padding: 0.05
-            - name: right_robotiq_85_right_inner_knuckle_link
+            - name: right_inner_knuckle_link
               padding: 0.05
-            - name: right_robotiq_85_left_finger_tip_link
+            - name: left_finger_tip_link
               padding: 0.05
-            - name: right_robotiq_85_right_finger_tip_link
+            - name: right_finger_tip_link
               padding: 0.05
