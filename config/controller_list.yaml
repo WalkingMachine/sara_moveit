@@ -14,7 +14,7 @@ controller_list:
       - right_wrist_roll_joint
   - name: sara_gripper_action_controller
     action_ns: position_controllers
-    type: GripperActionController
+    type: position_controllers/GripperActionController
     default: true
     joints:
       - right_robotiq_85_left_knuckle_joint
