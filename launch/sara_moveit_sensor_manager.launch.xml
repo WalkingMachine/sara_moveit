@@ -1,3 +1,0 @@
-<launch>
-    <rosparam command="load" file="$(find sara_moveit)/config/sensors_list.yaml" />
-</launch>
