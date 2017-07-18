@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+
+<launch>
+
+    <!--    start the server   -->
+    <node name="sara_move_arm_server" pkg="sara_moveit" type="move_arm_server"/>
+
+</launch>
