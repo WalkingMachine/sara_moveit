@@ -17,4 +17,4 @@ controller_list:
     type: position_controllers/GripperActionController
     default: true
     joints:
-      - left_knuckle_joint
+      - right_robotiq_85_left_knuckle_joint
