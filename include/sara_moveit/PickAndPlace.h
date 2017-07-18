@@ -1,8 +1,0 @@
-//
-// Created by gortium on 3/1/17.
-//
-
-#ifndef SARA_MOVEIT_PICKANDPLACE_H
-#define SARA_MOVEIT_PICKANDPLACE_H
-
-#endif //SARA_MOVEIT_PICKANDPLACE_H
