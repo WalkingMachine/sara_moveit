@@ -12,9 +12,10 @@ controller_list:
       - right_elbow_yaw_joint
       - right_wrist_pitch_joint
       - right_wrist_roll_joint
-  - name: sara_gripper_action_controller
-    action_ns: position_controllers
-    type: position_controllers/GripperActionController
+  -
+    name: sara_gripper_action_controller
+    action_ns: gripper_cmd
+    type: GripperCommand
     default: true
     joints:
       - right_finger_joint
