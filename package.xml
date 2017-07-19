@@ -5,8 +5,8 @@
   <description>
      An automatically generated package with all the configuration and launch files for using the sara with the MoveIt! Motion Planning Framework
   </description>
-  <author email="red1_laref@gmail.com">Redouane Laref</author>
-  <maintainer email="red1_laref@gmail.com">Redouane Laref</maintainer>
+  <author email="red1.laref@gmail.com">Redouane Laref</author>
+  <maintainer email="red1.laref@gmail.com">Redouane Laref</maintainer>
 
   <license>BSD</license>
 
