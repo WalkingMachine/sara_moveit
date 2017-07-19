@@ -5,6 +5,6 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/sara.srdf
   CONFIG:
-    author_name: Thierry Pouplier
-    author_email: thierrypouplier@gmail.com
-    generated_timestamp: 1488812499
+    author_name: Redouane Laref
+    author_email: red1.laref@gmail.com
+    generated_timestamp: 1500481854

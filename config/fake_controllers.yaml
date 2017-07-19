@@ -10,4 +10,4 @@ controller_list:
       - right_wrist_roll_joint
   - name: fake_RightGripper_controller
     joints:
-      - finger_joint
+      - right_finger_joint
