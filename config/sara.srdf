@@ -31,7 +31,7 @@
     </group_state>
     <group_state name="IdlePose" group="RightArm">
         <joint name="right_elbow_pitch_joint"       value="1.0" />
-        <joint name="right_elbow_yaw_joint"         value="1.5" />
+        <joint name="right_elbow_yaw_joint"         value="0.0" />
         <joint name="right_shoulder_pitch_joint"    value="0.1013" />
         <joint name="right_shoulder_roll_joint"     value="0" />
         <joint name="right_shoulder_yaw_joint"      value="0" />
@@ -49,7 +49,7 @@
     </group_state>
     <group_state name="PreGripPose" group="RightArm">
         <joint name="right_elbow_pitch_joint"       value="-0.4190349777" />
-        <joint name="right_elbow_yaw_joint"         value="1.5258965295" />
+        <joint name="right_elbow_yaw_joint"         value="0.0" />
         <joint name="right_shoulder_pitch_joint"    value="0.1558482908" />
         <joint name="right_shoulder_roll_joint"     value="-0.005091423" />
         <joint name="right_shoulder_yaw_joint"      value="0.0895210366" />
