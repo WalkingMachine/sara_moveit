@@ -31,13 +31,13 @@
         <joint name="right_finger_joint" value="0.775" />
     </group_state>
     <group_state name="IdlePose" group="RightArm">
-        <joint name="right_elbow_pitch_joint" value="1" />
-        <joint name="right_elbow_yaw_joint" value="0" />
-        <joint name="right_shoulder_pitch_joint" value="0.1013" />
-        <joint name="right_shoulder_roll_joint" value="0" />
-        <joint name="right_shoulder_yaw_joint" value="0" />
-        <joint name="right_wrist_pitch_joint" value="0" />
-        <joint name="right_wrist_roll_joint" value="0" />
+        <joint name="right_elbow_pitch_joint" value="1.03778800016561" />
+        <joint name="right_elbow_yaw_joint" value="-0.779301563117743" />
+        <joint name="right_shoulder_pitch_joint" value="0.112107929515749" />
+        <joint name="right_shoulder_roll_joint" value="-0.0661836312811133" />
+        <joint name="right_shoulder_yaw_joint" value="0.00581946446648285" />
+        <joint name="right_wrist_pitch_joint" value="0.29759227312915" />
+        <joint name="right_wrist_roll_joint" value="0.390582603377095" />
     </group_state>
     <group_state name="DisplacementPose" group="RightArm">
         <joint name="right_elbow_pitch_joint" value="0.653707" />
@@ -58,13 +58,13 @@
         <joint name="right_wrist_roll_joint" value="-1.25735" />
     </group_state>
     <group_state name="PostGripPose" group="RightArm">
-        <joint name="right_elbow_pitch_joint" value="-0.749471" />
-        <joint name="right_elbow_yaw_joint" value="0.387752" />
-        <joint name="right_shoulder_pitch_joint" value="-0.575356" />
-        <joint name="right_shoulder_roll_joint" value="0.389333" />
-        <joint name="right_shoulder_yaw_joint" value="0.412918" />
-        <joint name="right_wrist_pitch_joint" value="-0.167204" />
-        <joint name="right_wrist_roll_joint" value="0.816589" />
+        <joint name="right_elbow_pitch_joint" value="-0.1619744765" />
+        <joint name="right_elbow_yaw_joint" value="-0.2699854869" />
+        <joint name="right_shoulder_pitch_joint" value="-0.1115178945" />
+        <joint name="right_shoulder_roll_joint" value="0.5195603412" />
+        <joint name="right_shoulder_yaw_joint" value="0.9137285204" />
+        <joint name="right_wrist_pitch_joint" value="-0.3973010238" />
+        <joint name="right_wrist_roll_joint" value="0.0598252508" />
     </group_state>
     <group_state name="Help_me_carry" group="RightArm">
         <joint name="right_elbow_pitch_joint" value="0" />
@@ -75,14 +75,32 @@
         <joint name="right_wrist_pitch_joint" value="0" />
         <joint name="right_wrist_roll_joint" value="0" />
     </group_state>
+    <group_state name="DropBagPose" group="RightArm">
+        <joint name="right_elbow_pitch_joint" value="0.5396951506" />
+        <joint name="right_elbow_yaw_joint" value="-1.7787306804" />
+        <joint name="right_shoulder_pitch_joint" value="0.1819190356" />
+        <joint name="right_shoulder_roll_joint" value="0.1938422161" />
+        <joint name="right_shoulder_yaw_joint" value="-0.4589292455" />
+        <joint name="right_wrist_pitch_joint" value="0.7363107785" />
+        <joint name="right_wrist_roll_joint" value="0.2807184842" />
+    </group_state>
     <group_state name="ShowGripper" group="RightArm">
         <joint name="right_elbow_pitch_joint" value="0" />
-        <joint name="right_elbow_yaw_joint" value="1.5" />
+        <joint name="right_elbow_yaw_joint" value="0" />
         <joint name="right_shoulder_pitch_joint" value="0.1013" />
         <joint name="right_shoulder_roll_joint" value="0" />
         <joint name="right_shoulder_yaw_joint" value="0" />
         <joint name="right_wrist_pitch_joint" value="0" />
         <joint name="right_wrist_roll_joint" value="0.1" />
+    </group_state>
+    <group_state name="PrePlacePose" group="RightArm">
+        <joint name="right_elbow_pitch_joint" value="-1" />
+        <joint name="right_elbow_yaw_joint" value="-0.343267524161249" />
+        <joint name="right_shoulder_pitch_joint" value="0.303138347042275" />
+        <joint name="right_shoulder_roll_joint" value="0.0234572474898691" />
+        <joint name="right_shoulder_yaw_joint" value="-0.589614971047774" />
+        <joint name="right_wrist_pitch_joint" value="-0.124252443527344" />
+        <joint name="right_wrist_roll_joint" value="1" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="Right_arm_end_effector" parent_link="right__dummy" group="RightGripper" />
