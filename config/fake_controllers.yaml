@@ -1,6 +1,7 @@
 controller_list:
   - name: fake_RightArm_controller
     joints:
+      - base_actuator_joint
       - right_shoulder_roll_joint
       - right_shoulder_pitch_joint
       - right_shoulder_yaw_joint

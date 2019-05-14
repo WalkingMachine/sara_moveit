@@ -5,6 +5,7 @@ controller_list:
     type: FollowJointTrajectory
     default: true
     joints:
+      - base_actuator_joint
       - right_shoulder_roll_joint
       - right_shoulder_pitch_joint
       - right_shoulder_yaw_joint
