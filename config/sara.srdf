@@ -62,39 +62,45 @@
     <disable_collisions link1="base_link" link2="head_link" reason="Default" />
     <disable_collisions link1="base_link" link2="neck_link" reason="Default" />
     <disable_collisions link1="base_link" link2="right_clavicular_link" reason="Never" />
-    <disable_collisions link1="base_link" link2="right_upper_arm_upper_link" reason="Never" />
-    <disable_collisions link1="base_link" link2="right_wrist_upper_link" reason="Default" />
+    <disable_collisions link1="base_link" link2="right_upper_arm_lower_link" reason="Default" />
     <disable_collisions link1="base_link" link2="torso_link" reason="Adjacent" />
     <disable_collisions link1="front_hokuyo_link" link2="head_link" reason="Never" />
     <disable_collisions link1="front_hokuyo_link" link2="head_xtion_link" reason="Never" />
     <disable_collisions link1="front_hokuyo_link" link2="neck_link" reason="Never" />
     <disable_collisions link1="front_hokuyo_link" link2="right_clavicular_link" reason="Never" />
+    <disable_collisions link1="front_hokuyo_link" link2="right_forearm_lower_link" reason="Never" />
     <disable_collisions link1="front_hokuyo_link" link2="right_forearm_upper_link" reason="Never" />
+    <disable_collisions link1="front_hokuyo_link" link2="right_right_outer_knuckle" reason="Never" />
+    <disable_collisions link1="front_hokuyo_link" link2="right_socket_link" reason="Never" />
     <disable_collisions link1="front_hokuyo_link" link2="right_upper_arm_lower_link" reason="Never" />
     <disable_collisions link1="front_hokuyo_link" link2="right_upper_arm_upper_link" reason="Never" />
+    <disable_collisions link1="front_hokuyo_link" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="front_hokuyo_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="front_hokuyo_link" link2="torso_link" reason="Never" />
     <disable_collisions link1="head_link" link2="head_xtion_link" reason="Adjacent" />
     <disable_collisions link1="head_link" link2="neck_link" reason="Adjacent" />
     <disable_collisions link1="head_link" link2="right_clavicular_link" reason="Never" />
+    <disable_collisions link1="head_link" link2="right_forearm_lower_link" reason="Never" />
     <disable_collisions link1="head_link" link2="right_forearm_upper_link" reason="Never" />
     <disable_collisions link1="head_link" link2="right_upper_arm_lower_link" reason="Never" />
     <disable_collisions link1="head_link" link2="right_upper_arm_upper_link" reason="Never" />
-    <disable_collisions link1="head_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="head_link" link2="torso_link" reason="Never" />
     <disable_collisions link1="head_xtion_link" link2="neck_link" reason="Never" />
     <disable_collisions link1="head_xtion_link" link2="right_clavicular_link" reason="Never" />
+    <disable_collisions link1="head_xtion_link" link2="right_forearm_lower_link" reason="Never" />
     <disable_collisions link1="head_xtion_link" link2="right_forearm_upper_link" reason="Never" />
     <disable_collisions link1="head_xtion_link" link2="right_upper_arm_lower_link" reason="Never" />
     <disable_collisions link1="head_xtion_link" link2="right_upper_arm_upper_link" reason="Never" />
-    <disable_collisions link1="head_xtion_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="head_xtion_link" link2="torso_link" reason="Never" />
     <disable_collisions link1="neck_link" link2="right_clavicular_link" reason="Never" />
+    <disable_collisions link1="neck_link" link2="right_forearm_lower_link" reason="Never" />
     <disable_collisions link1="neck_link" link2="right_forearm_upper_link" reason="Never" />
     <disable_collisions link1="neck_link" link2="right_upper_arm_lower_link" reason="Never" />
     <disable_collisions link1="neck_link" link2="right_upper_arm_upper_link" reason="Never" />
+    <disable_collisions link1="neck_link" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="neck_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="neck_link" link2="torso_link" reason="Adjacent" />
+    <disable_collisions link1="right_clavicular_link" link2="right_forearm_lower_link" reason="Never" />
     <disable_collisions link1="right_clavicular_link" link2="right_forearm_upper_link" reason="Never" />
     <disable_collisions link1="right_clavicular_link" link2="right_left_outer_knuckle" reason="Never" />
     <disable_collisions link1="right_clavicular_link" link2="right_right_outer_knuckle" reason="Never" />
@@ -105,6 +111,20 @@
     <disable_collisions link1="right_clavicular_link" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_clavicular_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_clavicular_link" link2="torso_link" reason="Adjacent" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_forearm_upper_link" reason="Adjacent" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_left_inner_finger" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_left_inner_knuckle" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_left_outer_finger" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_left_outer_knuckle" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_right_inner_finger" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_right_inner_knuckle" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_right_outer_finger" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_right_outer_knuckle" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_robotiq_arg2f_link" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_socket_link" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_upper_arm_upper_link" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_wrist_lower_link" reason="Never" />
+    <disable_collisions link1="right_forearm_lower_link" link2="right_wrist_upper_link" reason="Adjacent" />
     <disable_collisions link1="right_forearm_upper_link" link2="right_left_inner_finger" reason="Never" />
     <disable_collisions link1="right_forearm_upper_link" link2="right_left_inner_knuckle" reason="Never" />
     <disable_collisions link1="right_forearm_upper_link" link2="right_left_outer_finger" reason="Never" />
@@ -118,7 +138,7 @@
     <disable_collisions link1="right_forearm_upper_link" link2="right_upper_arm_lower_link" reason="Adjacent" />
     <disable_collisions link1="right_forearm_upper_link" link2="right_upper_arm_upper_link" reason="Never" />
     <disable_collisions link1="right_forearm_upper_link" link2="right_wrist_lower_link" reason="Never" />
-    <disable_collisions link1="right_forearm_upper_link" link2="right_wrist_upper_link" reason="Adjacent" />
+    <disable_collisions link1="right_forearm_upper_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_left_inner_finger" link2="right_left_inner_knuckle" reason="Default" />
     <disable_collisions link1="right_left_inner_finger" link2="right_left_outer_finger" reason="Adjacent" />
     <disable_collisions link1="right_left_inner_finger" link2="right_left_outer_knuckle" reason="Never" />
@@ -126,8 +146,6 @@
     <disable_collisions link1="right_left_inner_finger" link2="right_right_outer_knuckle" reason="Never" />
     <disable_collisions link1="right_left_inner_finger" link2="right_robotiq_arg2f_link" reason="Never" />
     <disable_collisions link1="right_left_inner_finger" link2="right_socket_link" reason="Never" />
-    <disable_collisions link1="right_left_inner_finger" link2="right_upper_arm_lower_link" reason="Never" />
-    <disable_collisions link1="right_left_inner_finger" link2="right_upper_arm_upper_link" reason="Never" />
     <disable_collisions link1="right_left_inner_finger" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_left_inner_finger" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_left_inner_knuckle" link2="right_left_outer_finger" reason="Never" />
@@ -136,8 +154,6 @@
     <disable_collisions link1="right_left_inner_knuckle" link2="right_right_outer_knuckle" reason="Never" />
     <disable_collisions link1="right_left_inner_knuckle" link2="right_robotiq_arg2f_link" reason="Adjacent" />
     <disable_collisions link1="right_left_inner_knuckle" link2="right_socket_link" reason="Never" />
-    <disable_collisions link1="right_left_inner_knuckle" link2="right_upper_arm_lower_link" reason="Never" />
-    <disable_collisions link1="right_left_inner_knuckle" link2="right_upper_arm_upper_link" reason="Never" />
     <disable_collisions link1="right_left_inner_knuckle" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_left_inner_knuckle" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_left_outer_finger" link2="right_left_outer_knuckle" reason="Adjacent" />
@@ -147,8 +163,6 @@
     <disable_collisions link1="right_left_outer_finger" link2="right_right_outer_knuckle" reason="Never" />
     <disable_collisions link1="right_left_outer_finger" link2="right_robotiq_arg2f_link" reason="Never" />
     <disable_collisions link1="right_left_outer_finger" link2="right_socket_link" reason="Never" />
-    <disable_collisions link1="right_left_outer_finger" link2="right_upper_arm_lower_link" reason="Never" />
-    <disable_collisions link1="right_left_outer_finger" link2="right_upper_arm_upper_link" reason="Never" />
     <disable_collisions link1="right_left_outer_finger" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_left_outer_finger" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_left_outer_knuckle" link2="right_right_inner_finger" reason="Never" />
@@ -157,7 +171,6 @@
     <disable_collisions link1="right_left_outer_knuckle" link2="right_right_outer_knuckle" reason="Never" />
     <disable_collisions link1="right_left_outer_knuckle" link2="right_robotiq_arg2f_link" reason="Adjacent" />
     <disable_collisions link1="right_left_outer_knuckle" link2="right_socket_link" reason="Never" />
-    <disable_collisions link1="right_left_outer_knuckle" link2="right_upper_arm_lower_link" reason="Never" />
     <disable_collisions link1="right_left_outer_knuckle" link2="right_upper_arm_upper_link" reason="Never" />
     <disable_collisions link1="right_left_outer_knuckle" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_left_outer_knuckle" link2="right_wrist_upper_link" reason="Never" />
@@ -172,25 +185,20 @@
     <disable_collisions link1="right_right_inner_knuckle" link2="right_right_outer_knuckle" reason="Default" />
     <disable_collisions link1="right_right_inner_knuckle" link2="right_robotiq_arg2f_link" reason="Adjacent" />
     <disable_collisions link1="right_right_inner_knuckle" link2="right_socket_link" reason="Never" />
-    <disable_collisions link1="right_right_inner_knuckle" link2="right_upper_arm_lower_link" reason="Never" />
     <disable_collisions link1="right_right_inner_knuckle" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_right_inner_knuckle" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_right_outer_finger" link2="right_right_outer_knuckle" reason="Adjacent" />
     <disable_collisions link1="right_right_outer_finger" link2="right_robotiq_arg2f_link" reason="Never" />
     <disable_collisions link1="right_right_outer_finger" link2="right_socket_link" reason="Never" />
-    <disable_collisions link1="right_right_outer_finger" link2="right_upper_arm_upper_link" reason="Never" />
     <disable_collisions link1="right_right_outer_finger" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_right_outer_finger" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_right_outer_knuckle" link2="right_robotiq_arg2f_link" reason="Adjacent" />
     <disable_collisions link1="right_right_outer_knuckle" link2="right_socket_link" reason="Never" />
-    <disable_collisions link1="right_right_outer_knuckle" link2="right_upper_arm_lower_link" reason="Never" />
     <disable_collisions link1="right_right_outer_knuckle" link2="right_upper_arm_upper_link" reason="Never" />
     <disable_collisions link1="right_right_outer_knuckle" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_right_outer_knuckle" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_robotiq_arg2f_link" link2="right_socket_link" reason="Adjacent" />
-    <disable_collisions link1="right_robotiq_arg2f_link" link2="right_upper_arm_lower_link" reason="Never" />
-    <disable_collisions link1="right_robotiq_arg2f_link" link2="right_upper_arm_upper_link" reason="Never" />
-    <disable_collisions link1="right_robotiq_arg2f_link" link2="right_wrist_lower_link" reason="Default" />
+    <disable_collisions link1="right_robotiq_arg2f_link" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_robotiq_arg2f_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_socket_link" link2="right_upper_arm_lower_link" reason="Never" />
     <disable_collisions link1="right_socket_link" link2="right_upper_arm_upper_link" reason="Never" />
@@ -198,7 +206,7 @@
     <disable_collisions link1="right_socket_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_upper_arm_lower_link" link2="right_upper_arm_upper_link" reason="Adjacent" />
     <disable_collisions link1="right_upper_arm_lower_link" link2="right_wrist_lower_link" reason="Never" />
-    <disable_collisions link1="right_upper_arm_lower_link" link2="right_wrist_upper_link" reason="Default" />
+    <disable_collisions link1="right_upper_arm_lower_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_upper_arm_upper_link" link2="right_wrist_lower_link" reason="Never" />
     <disable_collisions link1="right_upper_arm_upper_link" link2="right_wrist_upper_link" reason="Never" />
     <disable_collisions link1="right_wrist_lower_link" link2="right_wrist_upper_link" reason="Adjacent" />
