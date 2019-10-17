@@ -1,6 +1,7 @@
 controller_list:
   - name: fake_RightArm_controller
     joints:
+      - front_actuator_joint
       - right_shoulder_roll_joint
       - right_shoulder_pitch_joint
       - right_shoulder_yaw_joint
@@ -10,4 +11,4 @@ controller_list:
       - right_wrist_roll_joint
   - name: fake_RightGripper_controller
     joints:
-      - right_finger_joint
+      - gripper_finger1_joint

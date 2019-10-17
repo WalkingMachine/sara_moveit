@@ -2,9 +2,10 @@ moveit_setup_assistant_config:
   URDF:
     package: sara_description
     relative_path: urdf/sara.urdf.xacro
+    xacro_args: ""
   SRDF:
     relative_path: config/sara.srdf
   CONFIG:
-    author_name: Redouane Laref
-    author_email: red1.laref@gmail.com
-    generated_timestamp: 1522012359
+    author_name: Philippe La Madeleine
+    author_email: philippe117@live.fr
+    generated_timestamp: 1571280698

@@ -2,43 +2,73 @@
 # Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
+  front_actuator_joint:
+    has_velocity_limits: true
+    max_velocity: 0.02
+    has_acceleration_limits: false
+    max_acceleration: 0
+  gripper_finger1_finger_tip_joint:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  gripper_finger1_inner_knuckle_joint:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  gripper_finger1_joint:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  gripper_finger2_finger_tip_joint:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  gripper_finger2_inner_knuckle_joint:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
+  gripper_finger2_joint:
+    has_velocity_limits: true
+    max_velocity: 2
+    has_acceleration_limits: false
+    max_acceleration: 0
   right_elbow_pitch_joint:
     has_velocity_limits: true
-    max_velocity: 4
+    max_velocity: 1
     has_acceleration_limits: false
     max_acceleration: 0
   right_elbow_yaw_joint:
     has_velocity_limits: true
-    max_velocity: 4
-    has_acceleration_limits: false
-    max_acceleration: 0
-  right_finger_joint:
-    has_velocity_limits: true
-    max_velocity: 4
+    max_velocity: 1
     has_acceleration_limits: false
     max_acceleration: 0
   right_shoulder_pitch_joint:
     has_velocity_limits: true
-    max_velocity: 4
+    max_velocity: 1
     has_acceleration_limits: false
     max_acceleration: 0
   right_shoulder_roll_joint:
     has_velocity_limits: true
-    max_velocity: 4
+    max_velocity: 0.57
     has_acceleration_limits: false
     max_acceleration: 0
   right_shoulder_yaw_joint:
     has_velocity_limits: true
-    max_velocity: 4
+    max_velocity: 1
     has_acceleration_limits: false
     max_acceleration: 0
   right_wrist_pitch_joint:
     has_velocity_limits: true
-    max_velocity: 4
+    max_velocity: 1
     has_acceleration_limits: false
     max_acceleration: 0
   right_wrist_roll_joint:
     has_velocity_limits: true
-    max_velocity: 4
+    max_velocity: 1
     has_acceleration_limits: false
     max_acceleration: 0
